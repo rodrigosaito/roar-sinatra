@@ -1,6 +1,6 @@
 # Roar::Sinatra
 
-TODO: Write a gem description
+Sinatra integration with roar
 
 ## Installation
 
@@ -18,7 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In your sinatra route just call roar method passing the object that will be serialized:
+
+```ruby
+get "/orders/:id"
+  roar Order.find(params[:id])
+end
+```
+
+The result will be a serialized Order using OrderRepresenter class to serialize the Order object with roar.
+You can alo use a custom representer class:
+
+```ruby
+get "/orders/:id"
+  roar Order.find(params[:id]), :representer_class => CustomOrderRepresenter
+```
 
 ## Contributing
 
