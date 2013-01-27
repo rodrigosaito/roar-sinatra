@@ -32,6 +32,7 @@ You can alo use a custom representer class:
 ```ruby
 get "/orders/:id"
   roar Order.find(params[:id]), :representer_class => CustomOrderRepresenter
+end
 ```
 
 ## Contributing
