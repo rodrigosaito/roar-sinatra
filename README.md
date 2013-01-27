@@ -1,6 +1,6 @@
 # Roar::Sinatra
 
-Sinatra integration with roar
+Sinatra integration with https://github.com/apotonick/roar
 
 ## Installation
 
