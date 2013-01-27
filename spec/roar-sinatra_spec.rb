@@ -77,4 +77,19 @@ describe Roar::Sinatra do
 
   end
 
+  context "when the object to serialize is an array" do
+
+    before do
+      mock_app do
+        get '/' do
+          roar [ Person.new ]
+        end
+      end
+    end
+
+    it "return an array" do
+      results_in [ { "name" => "Some Name" } ]
+    end
+  end
+
 end
