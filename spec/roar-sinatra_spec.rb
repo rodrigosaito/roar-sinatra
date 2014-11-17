@@ -1,7 +1,9 @@
 require 'spec_helper'
-
 require 'roar/json'
 require 'roar/json/hal'
+require 'roar/decorator'
+require 'roar/representer/json'
+require 'roar/representer/json/hal'
 
 describe Roar::Sinatra do
 
@@ -26,6 +28,22 @@ describe Roar::Sinatra do
     include Roar::JSON::HAL
 
     property :age
+  end
+  
+  
+  class Dog
+    attr_accessor :name, :age
+
+    def initialize
+      @name = "Fido"
+      @age = 20
+    end
+  end
+  
+  class DogRepresenter < Roar::Decorator
+    include Roar::Representer::JSON
+
+    property :name
   end
 
   def mock_app(&block)
@@ -75,6 +93,20 @@ describe Roar::Sinatra do
       results_in "age" => 20
     end
 
+  end
+  
+  context "when presenter is a decorator" do
+    before do
+      mock_app do
+        get '/' do
+          roar Dog.new
+        end
+      end
+    end
+    
+    it "returns a json response" do
+      results_in "name" => 'Fido'
+    end
   end
 
   context "when the object to serialize is an array" do

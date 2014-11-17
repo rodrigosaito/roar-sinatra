@@ -1,5 +1,5 @@
 require 'roar-sinatra'
-
+require 'json'
 require 'sinatra/contrib'
 require 'json'
 
