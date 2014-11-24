@@ -2,8 +2,6 @@ require 'spec_helper'
 require 'roar/json'
 require 'roar/json/hal'
 require 'roar/decorator'
-require 'roar/representer/json'
-require 'roar/representer/json/hal'
 
 describe Roar::Sinatra do
 
@@ -41,7 +39,7 @@ describe Roar::Sinatra do
   end
   
   class DogRepresenter < Roar::Decorator
-    include Roar::Representer::JSON
+    include Roar::JSON
 
     property :name
   end
@@ -69,8 +67,8 @@ describe Roar::Sinatra do
       end
     end
 
-    it "returns a response with content_type hal+json" do
-      expect(response.content_type).to eq('application/hal+json')
+    it "returns a response with content_type json" do
+      expect(response.content_type).to eq('application/json')
     end
 
     it "returns a hal+json response" do
@@ -99,7 +97,7 @@ describe Roar::Sinatra do
     before do
       mock_app do
         get '/' do
-          roar Dog.new
+          represent Dog.new
         end
       end
     end

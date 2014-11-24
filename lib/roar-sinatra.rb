@@ -5,8 +5,9 @@ require 'sinatra/base'
 module Roar
   module Sinatra
 
+
     def represent(object, options = {})
-      content_type 'application/hal+json'
+      content_type options.fetch('content_type', 'application/json')
 
       if object.is_a? Array
         object.map do |obj|
