@@ -1,6 +1,7 @@
 require 'roar-sinatra'
 
 require 'sinatra/contrib'
+require 'json'
 
 RSpec.configure do |config|
 
