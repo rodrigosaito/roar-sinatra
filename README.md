@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-Roar::Sinatra adds a roar helper method to serialize objects using roar.
+Roar::Sinatra adds a represent helper method to serialize objects using roar.
 
 Roar::Sinatra assumes the name of your representer is class_name + "Representer".
 
@@ -29,7 +29,7 @@ require "sinatra"
 require "roar-sinatra"
 
 get '/orders/:id' do
-  roar Order.find(params[:id])
+  represent Order.find(params[:id])
 end
 ```
 
@@ -43,7 +43,7 @@ class MyApp < Sinatra::Base
   helpers Roar::Sinatra
 
   get '/orders/:id' do
-    roar Order.find(params[:id])
+    represent Order.find(params[:id])
   end
 
 end
@@ -55,7 +55,7 @@ You can also use a custom representer class:
 
 ```ruby
 get "/orders/:id"
-  roar Order.find(params[:id]), :representer_class => CustomOrderRepresenter
+  represent Order.find(params[:id]), :representer_class => CustomOrderRepresenter
 end
 ```
 

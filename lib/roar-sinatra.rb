@@ -5,7 +5,7 @@ require 'sinatra/base'
 module Roar
   module Sinatra
 
-    def roar(object, options = {})
+    def represent(object, options = {})
       content_type 'application/hal+json'
 
       if object.is_a? Array

@@ -41,12 +41,12 @@ describe Roar::Sinatra do
 
   let(:response) { get '/' }
 
-  context "using roar without options" do
+  context "using represent without options" do
 
     before do
       mock_app do
         get '/' do
-          roar Person.new
+          represent Person.new
         end
       end
     end
@@ -66,7 +66,7 @@ describe Roar::Sinatra do
     before do
       mock_app do
         get '/' do
-          roar Person.new, :representer_class => CustomPersonPresenter
+          represent Person.new, :representer_class => CustomPersonPresenter
         end
       end
     end
@@ -82,7 +82,7 @@ describe Roar::Sinatra do
     before do
       mock_app do
         get '/' do
-          roar [ Person.new ]
+          represent [ Person.new ]
         end
       end
     end
