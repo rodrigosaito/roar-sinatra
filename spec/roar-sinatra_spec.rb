@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-require 'roar/representer/json'
-require 'roar/representer/json/hal'
+require 'roar/json'
+require 'roar/json/hal'
 
 describe Roar::Sinatra do
 
@@ -15,15 +15,15 @@ describe Roar::Sinatra do
   end
 
   module PersonRepresenter
-    include Roar::Representer::JSON
-    include Roar::Representer::JSON::HAL
+    include Roar::JSON
+    include Roar::JSON::HAL
 
     property :name
   end
 
   module CustomPersonPresenter
-    include Roar::Representer::JSON
-    include Roar::Representer::JSON::HAL
+    include Roar::JSON
+    include Roar::JSON::HAL
 
     property :age
   end
