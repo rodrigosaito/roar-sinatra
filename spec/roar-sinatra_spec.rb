@@ -36,7 +36,7 @@ describe Roar::Sinatra do
   end
 
   def results_in(obj)
-    JSON.parse(get('/').body).should == obj
+    expect(JSON.parse(get('/').body)).to eq(obj)
   end
 
   let(:response) { get '/' }
@@ -52,7 +52,7 @@ describe Roar::Sinatra do
     end
 
     it "returns a response with content_type hal+json" do
-      response.content_type.should == 'application/hal+json'
+      expect(response.content_type).to eq('application/hal+json')
     end
 
     it "returns a hal+json response" do
